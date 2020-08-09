@@ -1,0 +1,59 @@
+{%extends 'index.html'%}
+
+
+{%block titulo%} 
+    <title>producto</title>
+{% endblock titulo%}
+
+
+{%block buscar_nuevo%}   
+     
+    
+{% endblock buscar_nuevo%}
+   
+
+{% block cuerpo %}
+ <form class="container col-md-6"  method="post">
+        {% csrf_token %} 
+        <br>
+        <div class="form-group ">
+            <label for="descripcion">Descipcion</label>
+           {{form.descripcion}}
+          </div>
+
+        <div class="form-row ">
+            <div class="form-group col-md-6">
+              <label for="precio">Precio</label>
+              {{form.precio}}
+            </div>
+            <div class="form-group col-md-4">
+              <label for="stock">Stock</label>
+              {{form.stock}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="iva">
+              {{form.iva}}
+              <label class="form-check-label" for="gridCheck">
+                Iva
+              </label>
+            </div>
+          </div>
+
+        <button type="submit" class="btn btn-primary">{{accion}}</button>
+        <l1><a class="btn mr-sm-2" style="background: #F54245" href="{% url 'productos' %}">Cancelar</a></l1>
+       
+    
+    </form>
+
+
+{%endblock cuerpo%}
+
+
+
+
+
+    
+
+
+    

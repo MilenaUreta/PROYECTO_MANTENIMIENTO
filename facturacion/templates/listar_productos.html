@@ -1,0 +1,67 @@
+{%extends 'index.html'%}
+{% load static %}
+
+{%block titulo%} 
+    <title>productos</title>
+{% endblock titulo%}
+
+
+{%block buscar_nuevo%}   
+     <input class="form-control mr-sm-2" type="text" placeholder="Descripcion" name="buscar" size="50">
+     <button type="submit" style="background: #11D3D0" class="btn mr-sm-2">Buscar</button>
+     <l1><a class="btn mr-sm-2" style="background: #11D3D0" href="{% url 'producto' %}">Nuevo</a></l1>
+{% endblock buscar_nuevo%}
+
+
+
+
+
+{%block cuerpo%}
+<div class="container-fluid"> 
+    <table class="table table-hover table-ligth table-striped ">
+        <thead>
+            <tr>
+                <th>Cod</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Iva</th>
+                <th>accion</th>
+            </tr>
+        </thead>
+        <body>
+            {% for producto in prod %}
+                <tr>
+                    <td>{{producto.id}}</td>
+                    <td>{{producto.descripcion.title}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.stock}}</td>
+                    <td  >
+                        {% if producto.iva%}
+                         <input class="btn" type="checkbox" checked aria-pressed="false" >
+                        {%else%}
+                        <input class="btn" type="checkbox"  >
+                         {%endif%}
+                         
+                    </td>
+                    <td>
+                        <ul>
+                            <l1><a class="btn btn-primary"  style="background: #119BD3"  href="{% url 'editarproducto' producto.id %}">Modifcar</a></l1>
+                            <l1><a class="btn btn-primary"  style="background: #F54245" href="{% url 'eliminarprod' producto.id %}">Eliminar</a></l1>
+                        
+                        </ul>
+                    </td>
+                </tr> 
+            {% endfor %}             
+        </body>
+    </table>
+</div> 
+{%endblock cuerpo%}
+
+
+
+    
+
+
+
+

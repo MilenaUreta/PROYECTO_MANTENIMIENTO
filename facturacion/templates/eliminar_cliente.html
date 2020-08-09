@@ -1,0 +1,34 @@
+{%extends 'producto.html'%}
+{%block titulo%} 
+    <title>eliminar producto</title>
+{% endblock titulo%}
+{%block cuerpo%} 
+<form method="POST" class="container col-md-6">
+    {% csrf_token %} 
+<h1 style="font-family:italic">Eliminar registro</h1>
+<div class="col-md6">
+<label ><b>Ruc:</b></label>
+{{cliente.ruc}}
+<br>
+<label ><b>Nombre:</b></label>
+{{cliente.nombre.title}}
+<br>
+<label > <b>Mail:</b> </label>
+{{cliente.correo}}
+<br>
+<label ><b>Telefono</b></label>
+{{cliente.telefono}}
+<br>
+<label ><b>Direccion</b></label>
+{{cliente.direccion.title}}
+<br>
+
+</div>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
+    <l1><a class="btn mr-sm-2" style="background: #F54245" href="{% url 'clientes' %}">Cancelar</a></l1>
+
+</form>
+
+
+{% endblock cuerpo%}
+ 

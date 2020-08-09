@@ -1,0 +1,44 @@
+{%extends 'producto.html'%}
+{%block titulo%} 
+    <title>eliminar producto</title>
+{% endblock titulo%}
+
+{%block cuerpo%} 
+<form method="POST" class="container col-md-6">
+    {% csrf_token %} 
+    <h1 style="font-family:italic">Eliminar registro</h1>
+    <div class="col-md6">
+        <fieldset disabled="disabled">
+        <label ><b>Descripcion:</b></label>
+        {{producto.descripcion}}
+        <br>
+        <label > <b>Precio:</b> </label>
+        {{producto.precio}}
+        <br>
+        <label ><b>Stock</b></label>
+        {{producto.stock}}
+        <br>
+        {% if producto.iva%}
+         <input class="btn" type="checkbox" checked  >
+         <label ><b>Iva</b></label>
+        {%else%}
+        <input class="btn" type="checkbox"  >
+        <label ><b>Iva</b></label>
+         {%endif%}
+        </fieldset>
+    </div>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
+    <l1><a class="btn mr-sm-2" style="background: #F54245" href="{% url 'productos' %}">Cancelar</a></l1>
+
+
+</form>
+
+
+{% endblock cuerpo%}
+ 
+     
+    
+
+
+
+

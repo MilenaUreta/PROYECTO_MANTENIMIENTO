@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+     <script src=" {% static 'js/bootstrap.js' %}"></script>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    {% block titulo%}
+    <title>inicio</title>
+    {%endblock%}
+</head>
+
+<header> 
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-dark naavb-tabs bg-dark">
+        <div class="container">
+          <img class="mr-sm-4" src="{% static 'img/favicon.ico'%}" height="30" width="30" alt="icono">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" >    
+            <span class="navbar-toggler-icon"></span>   
+          </button>   
+         
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item ">
+                   <a class="nav-link" href="/ventas">{{Ventas}} </a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="/productos">{{Productos}}</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="/clientes">{{Clientes}}</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="/admin">{{Admin}}</a>
+               </li>
+           </ul>
+       
+           <form class="form-inline my-2 my-md-0" >
+            {%block buscar_nuevo%}   
+                 <input class="form-control mr-sm-2" type="text" placeholder="Buscar" name="buscar" size="50">
+                 <button type="submit" style="background: #11D3D0" class="btn mr-sm-2">Buscar</button>
+                 <l1><a class="btn mr-sm-2" style="background: #11D3D0" href="">Nuevo</a></l1>
+            {% endblock buscar_nuevo%}
+           </form>
+        </div>
+      </nav> 
+    </div>
+</header>
+
+<body>
+{% block cuerpo %}
+    <div class="container-fluid"> 
+        <table class="table table-hover table-ligth table-striped ">
+	    	<thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Fecha</th>
+                    <th>cliente</th>
+                    <th>total</th>
+                    <th>accion</th>
+                </tr>
+            </thead>
+            <body>
+                {% for venta in fact %}
+            	    <tr>
+            	    	<td>{{venta.id}}</td>
+                        <td>{{venta.fecha}}</td>
+                        <td>{{venta.cliente}}</td>
+                        <td>{{venta.total}}</td>
+            	    	<td>
+                            <ul>
+                                <l1><a class="btn btn-primary" style="background: #119BD3"  href="">Modifcar</a></l1>
+                                <l1><a class="btn btn-primary"  style="background: #F54245" href="">Elimar</a></l1>
+                            
+                            </ul>
+                        </td>
+                    </tr> 
+                {% endfor %}             
+            </body>
+        </table>
+    </div> 
+{% endblock cuerpo %}  
+  
+{%block eliminar%}  
+ 
+  <!-- Modal -->
+  
+   
+  
+
+{%endblock eliminar%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
